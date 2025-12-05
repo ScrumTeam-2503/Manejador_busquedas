@@ -3,7 +3,7 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 import logic.pedido_logic as pedido_service
 from models.pedido_models import PedidoOut, PedidoCollection
-from main import limiter
+from config import limiter
 
 router = APIRouter()
 ENDPOINT_NAME = "/pedidos"

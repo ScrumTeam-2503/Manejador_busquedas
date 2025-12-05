@@ -3,7 +3,7 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 import logic.producto_logic as producto_service
 from models.producto_models import ProductoOut, ProductoCollection
-from main import limiter
+from config import limiter
 
 router = APIRouter()
 ENDPOINT_NAME = "/productos"
