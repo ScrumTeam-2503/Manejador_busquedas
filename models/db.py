@@ -4,7 +4,7 @@ from pydantic.functional_validators import BeforeValidator
 from typing_extensions import Annotated
 
 client = motor.motor_asyncio.AsyncIOMotorClient(
-    f"mongodb://provesi_user:scrumteam@{os.getenv('PROVESI_DB_HOST', 'localhost')}:27017/provesi_mongodb?authSource=provesi_mongodb"
+    f"mongodb://provesi_user:scrumteam@{os.getenv('PROVESI_DB_HOST', '100.26.61.156 ')}:27017/provesi_mongodb?authSource=provesi_mongodb"
 )
 db = client.get_database("provesi_mongodb")
 pedidos_collection = db.get_collection("pedidos")
