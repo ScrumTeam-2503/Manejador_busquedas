@@ -3,11 +3,10 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 import logic.producto_logic as producto_service
 from models.producto_models import ProductoOut, ProductoCollection
+from main import limiter
 
 router = APIRouter()
 ENDPOINT_NAME = "/productos"
-
-limiter = Limiter(key_func=get_remote_address)
 
 @router.get(
     "/",
@@ -26,5 +25,6 @@ async def get_productos(request: Request):
     response_model=ProductoOut,
     status_code=status.HTTP_200_OK,
 )
-async def get_producto(codigo: str):
+@limiter.limit("20/second")
+async def get_producto(codigo: str, request: Request):
     return await producto_service.get_producto(codigo)
